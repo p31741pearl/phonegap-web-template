@@ -7,89 +7,8 @@
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-    
-
-    <!--    <script>
-        AFRAME.registerComponent('scale-on-mouseenter', {
-            schema: {
-                to: {
-                    default: '2.5 2.5 2.5'
-                },
-                leave: {
-                    default: '1 1 1'
-                }
-            },
-            init: function() {
-                var data = this.data;
-                this.el.addEventListener('mouseenter', function() {
-                    this.setAttribute('scale', data.to);
-                });
-                this.el.addEventListener('click', function() {
-                    this.setAttribute('scale', data.leave);
-                });
-            }
-        });
-
-    </script>
--->
-    <!-- <script>
-        document.querySelector("#sky").addEventListener('mouseenter', function onDocumentMouseDown(event){
-            alert("preventDefault will stop you from checking this checkbox!")
-            event.preventDefault();
-              event.preventDefault();
-                        var vector = new THREE.Vector3(); //三維座標物件
-                        vector.set(
-                            (event.clientX / window.innerWidth) * 2 - 1,
-                            -(event.clientY / window.innerHeight) * 2 1, 0.5);
-                        vector.unproject("cam");
-                        var raycaster = new THREE.Raycaster(cam.position, vector.sub(cam.position).normalize());
-                        var intersects = raycaster.intersectObjects(scene.children);
-                        if (intersects.length > 0) {
-                            var selected = intersects[0]; //取第一個物體
-                            console.log("x座標:"
-                                selected.point.x);
-                            console.log("y座標:"
-                                selected.point.y);
-                            console.log("z座標:"
-                                selected.point.z);
-                        }
-             el.setAttribute('position',  {x: selected.point.x, y: selected.point.y , z: selected.point.z});
-        }, false);
-    </script>-->
     <script>
-        /* var entityEl = document.querySelector('a-entity');*/
-
-        /*    function registerInteractionEvents() {
-            var on = document.addEventListener.bind(document);
-            var isMousePressed = false;
-
-            this.entityEl.setAttribute('geometry', {
-                primitive: 'box',
-                height: 3,
-                width: 10
-            });
-            document.querySelector("a-entity").addEventListener('click', function onDocumentclick(event) {
-
-                pointerX = e.clientX;
-                pointerY = e.clientY;
- 
-            })*/
-        /* AFRAME.registerComponent('cursor-listener', {
-             init: function() {
-
-                entityEl.addEventListener('click', function() {
-                   x.setAttribute('position', {
-                         x: pointerX,
-                         y: pointerY,
-                         z: 0
-                     })
-                     console.log('I was clicked at: ', evt.detail.intersection.point);
-                 });
-             }
-         });*/
-
         AFRAME.registerComponent('cursor-listener', {
-
             init: function() {
                 var isMousePressed = false;
                 var pointerX = 0;
@@ -99,16 +18,16 @@
                 var on = document.addEventListener.bind(document);
                 on('click', function(e) {
                     isMousePressed = true;
-                    pointerX =  e.clientX ;
+                    pointerX = e.clientX;
                     pointerY = e.clientY;
-                     pointerZ = 0;
+                    pointerZ = 0;
                 }, false);
                 var entityEl = document.querySelector('a-scene')
                 entityEl.addEventListener('click', function() {
                     x.setAttribute('position', {
-                        x:  pointerX/-200,
-                        y:  pointerY/-200,
-                       
+                        x: pointerX / -200,
+                        y: pointerY / -200,
+
                     })
                     console.log(pointerX);
                     console.log(pointerY);
@@ -116,42 +35,14 @@
                 });
             }
         });
-        /*on('mousemove', function(e) {
-            if (isMousePressed) {
-                lontitude = ( pointerX - e.clientX ) * 0.02 + lontitude;
-                latitude = ( e.clientY - pointerY ) * 0.02 + latitude;
-            } 
-
-            return ;
-        }, false);
-        */
-        /*on('mouseup', function(e) {
-                isMousePressed = false;
-            }, false);
-        }*/
-
-        /*registerInteractionEvents();*/
     </script>
 
 
 </head>
 
 <body>
-
     <a-scene id="sky">
-        <!-- <a-entity camera look-controls position="0 1.6 0"></a-entity>-->
-      
-
-        <!--    <a-cylinder color="red" position="0 2 -5" rotation="30 100 0" scale="1 1 1" height="0.2" scale-on-mouseenter="to: 2.2 2.2 2.2">
-
-            <a-animation attribute="position" to="0 2.2 -5" begin="click" direction="alternate" dur="2000" repeat="indefinite"></a-animation> 
-
-        </a-cylinder> -->
         <a-entity id="my" cursor-listener geometry position></a-entity>
         <a-sky src="1515771811007.JPEG"></a-sky>
-
-        <!--<a-entity particle-system="preset: snow" position="0 0 -10"></a-entity>-->
     </a-scene>
-
-
 </body></html>
