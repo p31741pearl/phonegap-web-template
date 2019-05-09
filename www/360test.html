@@ -2,47 +2,93 @@
 <html>
 
 <head>
-    <script src="js/three.js"></script>
-    <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
+    <style>
+        <style>#play-button {
+            position: fixed;
+            top: calc(50% - 1em);
+            left: calc(50% - 2em);
+            width: 4em;
+            height: 4em;
+            z-index: 10;
+        }
+    </style>
+
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
     <script>
         AFRAME.registerComponent('cursor-listener', {
             init: function() {
-                var isMousePressed = false;
-                var pointerX = 0;
-                var pointerY = 0;
-                var pointerZ = 0;
-                var x = document.getElementById('my')
-                var on = document.addEventListener.bind(document);
-                on('click', function(e) {
-                    isMousePressed = true;
-                    pointerX = e.clientX;
-                    pointerY = e.clientY;
-                    pointerZ = 0;
-                }, false);
-                var entityEl = document.querySelector('a-scene')
-                entityEl.addEventListener('click', function() {
-                    x.setAttribute('position', {
-                        x: pointerX / -200,
-                        y: pointerY / -200,
+                var isMousePressed = false
+                var x = document.getElementById('play-button').addEventListener('click', function() {
+                var on = document.addEventListener.bind(document)
+                    on('click', function(e) {
+                        isMousePressed = true;
+                        var entityE2 = document.querySelector('a-scene')
+                        var entityEl = document.createElement('a-entity')
 
-                    })
-                    console.log(pointerX);
-                    console.log(pointerY);
-                    console.log(pointerZ);
+                        entityE2.appendChild(entityEl);
+                        var i = document.getElementById('clickPosition').object3D.getWorldPosition();
+
+                        entityE2.addEventListener('click', function() {
+
+
+                            entityEl.setAttribute('position', {
+                                x: i.x,
+                                y: i.y,
+                                z: i.z
+
+                            });
+                            entityEl.setAttribute('geometry', {
+                                primitive: 'sphere',
+                                radius: 3,
+                                segmentsWidth: 20,
+                                segmentsHeight: 20
+                            });
+
+
+
+                            console.log(i.x);
+                            console.log(i.y);
+                            console.log(i.z);
+                        });
+                    }, false)
                 });
+
             }
         });
     </script>
 
 
+
+
+
+
 </head>
 
 <body>
-    <a-scene id="sky">
-        <a-entity id="my" cursor-listener geometry position></a-entity>
-        <a-sky src="1515771811007.JPEG"></a-sky>
+    <button id="play-button" click>我要加新tag啦幹</button>
+    <a-scene id="hey">
+
+        <a-camera>
+            <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity>
+            <a-entity id="clickPosition" position="0 0 -100"></a-entity>
+            <a-entity cursor-listener></a-entity>
+        </a-camera>
+
+         <a-sky id="you" src="1515771811007.JPEG"></a-sky>
+
+
+
+
+
+
     </a-scene>
+
+
+
+
+
+
+
 </body></html>
