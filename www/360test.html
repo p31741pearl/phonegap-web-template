@@ -2,8 +2,64 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
-        <style>#play-button {
+         * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+     
+        /*1024-1200px尺寸的螢幕*/
+        @media only screen and (max-width:1200px){
+            .container{
+                background:blue;
+            }  
+        }
+          /*768-1023px尺寸的螢幕*/
+        @media only screen and (max-width:1023px){
+              .container{
+                background:yellow;
+            }
+        }
+          /*481-767px尺寸的螢幕*/
+        @media only screen and (max-width:767px){
+              .container{
+                background:black;
+            }
+        }
+          /*手機尺寸的螢幕*/
+        @media only screen and (max-width:480px){
+            .container{
+                background:red;
+            }
+        }
+      
+        .topp{
+            float:left;
+            display: block;
+          
+  height: 100%;
+  width: 50%;
+  padding-top: 5%;
+ z-index:-1;
+            
+             position:absolute;
+            
+      
+}
+      
+      .topp a-scene {
+            
+  padding:110%;
+        margin:auto;
+        }
+        .tools{
+            width: 1px;
+            height:1px;
+            
+        }
+          .tools #bott {
             position: fixed;
             top: calc(50% - 1em);
             left: calc(50% - 2em);
@@ -11,52 +67,113 @@
             height: 4em;
             z-index: 10;
         }
+       
+        .blockk{
+           position:absolute;
+            border-radius: 20px;
+            opacity: 0.5;
+            margin:60px;
+            width:400px;
+            height:400px;
+            background-color:white;
+             z-index:1;
+        }
+        .blockk a{
+            
+            padding:10px;
+           display: block;
+           border-radius: 10px;
+            font-size: 50px;
+            text-decoration: none;
+            background-color: aquamarine;
+            
+        }
+
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
+  
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script>
     <script>
         AFRAME.registerComponent('cursor-listener', {
             init: function() {
                 var isMousePressed = false
-                var x = document.getElementById('play-button').addEventListener('click', function() {
+
                 var on = document.addEventListener.bind(document)
-                    on('click', function(e) {
-                        isMousePressed = true;
-                        var entityE2 = document.querySelector('a-scene')
-                        var entityEl = document.createElement('a-entity')
+                on('click', function(e) {
+                    isMousePressed = true;
+                    var entityE2 = document.querySelector('a-scene')
+                    var entityEl = document.createElement('a-entity')
 
-                        entityE2.appendChild(entityEl);
-                        var i = document.getElementById('clickPosition').object3D.getWorldPosition();
+                    entityE2.appendChild(entityEl);
+                    var i = document.getElementById('clickPosition').object3D.getWorldPosition();
 
-                        entityE2.addEventListener('click', function() {
-
-
-                            entityEl.setAttribute('position', {
-                                x: i.x,
-                                y: i.y,
-                                z: i.z
-
-                            });
-                            entityEl.setAttribute('geometry', {
-                                primitive: 'sphere',
-                                radius: 3,
-                                segmentsWidth: 20,
-                                segmentsHeight: 20
-                            });
+                    entityE2.addEventListener('click', function() {
 
 
+                        entityEl.setAttribute('position', {
+                            x: i.x,
+                            y: i.y,
+                            z: i.z
 
-                            console.log(i.x);
-                            console.log(i.y);
-                            console.log(i.z);
                         });
-                    }, false)
-                });
+                        entityEl.setAttribute('geometry', {
+                            primitive: 'sphere',
+                            radius: 3,
+                            segmentsWidth: 20,
+                            segmentsHeight: 20
+                        });
+                        
+                       
+
+
+
+                        console.log(i.x);
+                        console.log(i.y);
+                        console.log(i.z);
+                  
+
+                    });
+                     
+                     entityEl.addEventListener('click', function() {
+                           entityEl.setAttribute('link', {
+                           href:'360test.html'
+                        });
+                     });
+                }, false)
+
+
+            },
+            
+             update: function() {
+                var isMousePressed = false
+
+                var on = document.addEventListener.bind(document)
+                on('click', function(e) {
+                    isMousePressed = true;
+                    var entityE2 = document.querySelector('a-scene')
+                    var k = document.getElementById('inf')
+
+                    var j = document.getElementById('camera').object3D.getWorldQuaternion();
+
+                    entityE2.addEventListener('click', function() {
+
+
+                        k.setAttribute('rotation', {
+                            x: j.x,
+                            y: j.y,
+                            z: j.z
+
+                        });
+                         console.log("ro"+j.x);
+                    });
+                }, false)
+
 
             }
         });
+       
     </script>
 
 
@@ -67,16 +184,27 @@
 </head>
 
 <body>
-    <button id="play-button" click>我要加新tag啦幹</button>
-    <a-scene id="hey">
+   <div style="position:relative;">
+   <div class="blockk"><a href="106840018%E5%8A%89%E6%B2%9B%E8%AA%BChw2.html">+</a></div>
+<div class="topp">
+    <a-scene id="hey" embedded>
+       <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="756" height="250" style=""></canvas>
 
+        <a-entity position="3 0 -3" rotation="0 180 0" look-controls id="camera" camera="userHeight: 3" listener>
+            <a-entity id="inf" geometry="primitive: plane; height: 50; width: 50" position="300 300 -500" click  material="color: gray; opacity: 0.8" material="color: black; shader: flat"></a-entity>
+        </a-entity>
+
+        <a-entity position="33 0 -33" cursor-listener look-controls id="camera" camera="userHeight: 1.6" listener>
+        </a-entity>
+
+        <a-entity id="player" camera></a-entity>
         <a-camera>
-            <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity>
+            <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -5" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity>
             <a-entity id="clickPosition" position="0 0 -100"></a-entity>
-            <a-entity cursor-listener></a-entity>
+            <a-entity cursor-listener ></a-entity>
         </a-camera>
 
-         <a-sky id="you" src="1515771811007.JPEG"></a-sky>
+        <a-sky id="you" src="1515771811007.JPEG"></a-sky>
 
 
 
@@ -85,9 +213,8 @@
 
     </a-scene>
 
-
-
-
+</div>
+</div>
 
 
 
