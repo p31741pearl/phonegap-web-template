@@ -5,110 +5,85 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <style>
-         * {
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-    }
-     
-        /*1024-1200px尺寸的螢幕*/
-        @media only screen and (max-width:1200px){
-            .container{
-                background:blue;
-            }  
-        }
-          /*768-1023px尺寸的螢幕*/
-        @media only screen and (max-width:1023px){
-              .container{
-                background:yellow;
+        /*手機尺寸的螢幕*/
+        @media only screen and (max-width:480px) {
+            * {
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
             }
-        }
-          /*481-767px尺寸的螢幕*/
-        @media only screen and (max-width:767px){
-              .container{
-                background:black;
-            }
-        }
-          /*手機尺寸的螢幕*/
-        @media only screen and (max-width:480px){
-            .container{
-                background:red;
-            }
-        }
-      
-        .topp{
-            float:left;
-            display: block;
-          
-  height: 100%;
-  width: 40%;
-  padding-top: 5%;
- z-index:-1;
-            
-             position:absolute;
-            
-      
-}
-        .blockk input{
-            margin-top: 10px;
-          margin-left: 10px;
-            display: block;
-            text-align: center;
-            width:260px;
-            height:80px;
-        }
-      
-      .topp a-scene {
-            
-  padding:110%;
-        margin:auto;
-        }
-        .tools{
-            width: 1px;
-            height:1px;
-            
-        }
-          .tools #bott {
-            position: fixed;
-            top: calc(50% - 1em);
-            left: calc(50% - 2em);
-            width: 4em;
-            height: 4em;
-            z-index: 10;
-        }
-       
-        .blockk{
-           position:absolute;
-            border-radius: 20px;
-            opacity: 0.8;
-            margin:60px;
-            width:280px;
-            height:350px;
-            background-color:white;
-             z-index:1;
-        }
-        .blockk a{
-            
-            text-align: center;
-           display: block;
-           border-radius: 10px;
-            font-size: 50px;
-            text-decoration: none;
-            background-color: #7fb5ff;
-            
-        }
-        .blockk i{
-            margin-bottom: 10px;
-            font-size: 30px;
-            color:white;
-        }
 
+            .topp {
+                height: 480px;
+                width: 100%;
+
+                z-index: -1;
+                position: absolute;
+            }
+
+            .blockk {
+                margin: 50px;
+                position: absolute;
+                border-radius: 20px;
+                opacity: 0.8;
+                width: 60%;
+                height: 300px;
+                background-color: white;
+                z-index: 1;
+
+            }
+
+            .blockk input,
+            #newInput {
+                margin-top: 30px;
+                margin: auto;
+                display: block;
+                text-align: center;
+                width: 80%;
+                ;
+                height: 80px;
+            }
+
+            .hey {
+                margin-bottom: 5pt;
+                text-align: left;
+
+                display: block;
+                border-radius: 8px;
+                font-size: 20pt;
+                text-decoration: none;
+                background: linear-gradient(to right, #ff7600, rgba(39, 156, 255, 0.94));
+                /*background-color: #7fb5ff;*/
+
+            }
+
+            .blockk i {
+                margin-left: 7pt;
+                margin-bottom: 10pt;
+                text-align: left;
+                font-size: 10pt;
+                color: white;
+            }
+            
+            #btn{
+             border-radius: 10pt;   
+             width:30pt;
+             height:20pt;
+            border:0;
+                margin-bottom: 5pt;
+                margin-left: 5pt;
+               background-color: #ffffff;
+        
+                
+            }
+        }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
-  
+
     <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script>
+
     <script>
         AFRAME.registerComponent('cursor-listener', {
             init: function() {
@@ -138,29 +113,29 @@
                             segmentsWidth: 20,
                             segmentsHeight: 20
                         });
-                        
-                       
+
+
 
 
 
                         console.log(i.x);
                         console.log(i.y);
                         console.log(i.z);
-                  
+
 
                     });
-                     
-                     entityEl.addEventListener('click', function() {
-                           entityEl.setAttribute('link', {
-                           href:'360test.html'
+
+                    entityEl.addEventListener('click', function() {
+                        entityEl.setAttribute('link', {
+                            href: '360test.html'
                         });
-                     });
+                    });
                 }, false)
 
 
             },
-            
-             update: function() {
+
+            update: function() {
                 var isMousePressed = false
 
                 var on = document.addEventListener.bind(document)
@@ -180,17 +155,14 @@
                             z: j.z
 
                         });
-                         console.log("ro"+j.x);
+                        console.log("ro" + j.x);
                     });
                 }, false)
 
 
             }
         });
-       
     </script>
-
-
 
 
 
@@ -198,42 +170,56 @@
 </head>
 
 <body>
-   <div style="position:relative;">
-   <div class="blockk"><a href="106840018%E5%8A%89%E6%B2%9B%E8%AA%BChw2.html"><i class="fas fa-plus-circle"></i></a>
-        <div class="content_form_input">
-                        <input type="text" placeholder="這段回憶是什麼呢?">
-                    </div>
-                  </div>
-<div class="topp">
-    <a-scene id="hey" embedded>
-       <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="756" height="250" style=""></canvas>
+    <div style="position:relative;">
+        <div class="blockk">
+            <div class="hey">
+                <button id="btn" onclick="addElementInput()">add</button>
+            </div>
+            <div id="parent">
 
-        <a-entity position="3 0 -3" rotation="0 180 0" look-controls id="camera" camera="userHeight: 3" listener>
-            <a-entity id="inf" geometry="primitive: plane; height: 50; width: 50" position="300 300 -500" click  material="color: gray; opacity: 0.8" material="color: black; shader: flat"></a-entity>
-        </a-entity>
+            </div>
+        </div>
+        <div class="topp">
+            <a-scene id="hey" embedded>
+                <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="756" height="250" style=""></canvas>
 
-        <a-entity position="33 0 -33" cursor-listener look-controls id="camera" camera="userHeight: 1.6" listener>
-        </a-entity>
+                <a-entity position="3 0 -3" rotation="0 180 0" look-controls id="camera" camera="userHeight: 3" listener>
+                    <a-entity id="inf" geometry="primitive: plane; height: 50; width: 50" position="300 300 -500" click material="color: gray; opacity: 0.8" material="color: black; shader: flat"></a-entity>
+                </a-entity>
 
-        <a-entity id="player" camera></a-entity>
-        <a-camera>
-            <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -5" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity>
-            <a-entity id="clickPosition" position="0 0 -100"></a-entity>
-            <a-entity cursor-listener ></a-entity>
-        </a-camera>
+                <a-entity position="33 0 -33" cursor-listener look-controls id="camera" camera="userHeight: 1.6" listener>
+                </a-entity>
 
-        <a-sky id="you" src="1515771811007.JPEG"></a-sky>
+                <a-entity id="player" camera></a-entity>
+                <a-camera>
+                    <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -5" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity>
+                    <a-entity id="clickPosition" position="0 0 -100"></a-entity>
+                    <a-entity cursor-listener></a-entity>
+                </a-camera>
 
+                <a-sky id="you" src="1515771811007.JPEG"></a-sky>
+            </a-scene>
 
+        </div>
+    </div>
+</body>
 
+<script language="javascript">
+    function addElementInput() {
 
+        var parent = document.getElementById("parent");
 
+        //添加 div
 
-    </a-scene>
+        var input = document.createElement("input");
 
-</div>
-</div>
+        //设置 div 属性，如 id
 
+        input.setAttribute("id", "newInput");
 
+        input.innerHTML = "js 动态添加input";
 
-</body></html>
+        parent.appendChild(input);
+
+    }
+</script></html>
