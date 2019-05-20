@@ -3,9 +3,9 @@
 
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-          <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-   
+
     <style>
         /*手機尺寸的螢幕*/
         @media only screen and (max-width:480px) {
@@ -66,18 +66,28 @@
                 font-size: 10pt;
                 color: white;
             }
-            
-            #btn{
-             border-radius: 10pt;   
-             width:30pt;
-             height:20pt;
-            border:0;
+
+            #btn {
+                border-radius: 10pt;
+                width: 30pt;
+                height: 20pt;
+                border: 0;
                 margin-bottom: 5pt;
                 margin-left: 5pt;
-               background-color: #ffffff;  
+                background-color: #ffffff;
             }
-            #hii{
-                display:none;
+
+            #hii {
+                display: none;
+            }
+            #addpoint{
+                position: absolute;
+                display:block;
+                text-align: center;
+                width:360pt;
+                height:20pt;
+                margin-top: 380pt;
+                border: none;
             }
         }
     </style>
@@ -88,13 +98,13 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script>
 
     <script>
-        var attachFastClick = Origami.fastclick;
-attachFastClick(document.body);
         AFRAME.registerComponent('cursor-listener', {
             init: function() {
+                var adddd= document.getElementById('addpoint');
                 var isMousePressed = false
-
+                
                 var on = document.addEventListener.bind(document)
+                adddd.addEventListener('click',function(){
                 on('click', function(e) {
                     isMousePressed = true;
                     var entityE2 = document.querySelector('a-scene')
@@ -119,33 +129,30 @@ attachFastClick(document.body);
                             segmentsHeight: 20
                         });
 
-
-
-
-
                         console.log(i.x);
                         console.log(i.y);
                         console.log(i.z);
-
+                         if (on = true){
+                        document.getElementById('hii').style.display = 'block';
+                        console.log("open");}
+                    
+                    else  {
+                        document.getElementById('hii').style.display = 'none';
+                        console.log("close");}
+                        return;
 
                     });
 
-                      if (on = false) {
- document.getElementById('hii').style.display = 'none';
-                          console.log("close");
-}
-                      if (on = true) {
- document.getElementById('hii').style.display = 'block';
-                           console.log("open");
-}
+                   
+                   
                 }, false)
-
+})
 
             },
 
-          
-
             
+
+
         });
     </script>
 
@@ -156,36 +163,25 @@ attachFastClick(document.body);
 
 <body>
     <div style="position:relative;">
-        
         <div class="blockk" id="hii" cursor-listener>
             <div class="hey">
                 <button id="btn" onclick="addElementInput()">add</button>
             </div>
-            <div id="parent">
-
-            </div>
+            <div id="parent"></div>
         </div>
         <div class="topp">
             <a-scene id="hey" embedded>
-                <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="756" height="250" style=""></canvas>
-
-              
-
-                <a-entity position="33 0 -33" cursor-listener look-controls id="camera" camera="userHeight: 1.6" listener>
-                </a-entity>
-
-                <a-entity id="player" camera></a-entity>
                 <a-camera>
-                    <a-entity cursor="fuse: true; fuseTimeout: 500" position="0 0 -5" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"></a-entity>
                     <a-entity id="clickPosition" position="0 0 -100"></a-entity>
                     <a-entity cursor-listener></a-entity>
                 </a-camera>
-
                 <a-sky id="you" src="1515771811007.JPEG"></a-sky>
             </a-scene>
-
         </div>
-         
+        <div class="bottombar">
+        <button id="addpoint" cursor-listener>+</button>
+        </div>
+
     </div>
 </body>
 
