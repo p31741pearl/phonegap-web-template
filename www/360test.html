@@ -3,8 +3,6 @@
 
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script type="text/javascript" src="components/loader.js"></script>
-     <script src="cordova.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
    
     <style>
@@ -129,49 +127,22 @@
 
                     });
 
-                    entityEl.addEventListener('click', function() {
-                        entityEl.setAttribute('link', {
-                            href: '360test.html'
-                        });
-                    });
-                    
+                      if (on = false) {
+ document.getElementById('hii').style.display = 'none';
+                          console.log("close");
+}
+                      if (on = true) {
+ document.getElementById('hii').style.display = 'block';
+                           console.log("open");
+}
                 }, false)
 
 
             },
 
-            update: function() {
-                var isMousePressed = false
+          
 
-                var on = document.addEventListener.bind(document)
-                on('click', function(e) {
-                    isMousePressed = true;
-                    var entityE2 = document.querySelector('a-scene')
-                    var k = document.getElementById('inf')
-
-                    var j = document.getElementById('camera').object3D.getWorldQuaternion();
-
-                    entityE2.addEventListener('click', function() {
-                        k.setAttribute('rotation', {
-                            x: j.x,
-                            y: j.y,
-                            z: j.z
-
-                        });
-                                         if (k = false) {
- document.getElementById('hii').style.display = 'none';
-}
-                      if (k = true) {
- document.getElementById('hii').style.display = 'block';
-}
-                        console.log("ro" + j.x);
-                    });
-                   
-   
-                }, false)
-
-
-            }
+            
         });
     </script>
 
@@ -195,9 +166,7 @@
             <a-scene id="hey" embedded>
                 <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="756" height="250" style=""></canvas>
 
-                <a-entity position="3 0 -3" rotation="0 180 0" look-controls id="camera" camera="userHeight: 3" listener>
-                    <a-entity id="inf" geometry="primitive: plane; height: 50; width: 50" position="300 300 -500" click material="color: gray; opacity: 0.8" material="color: black; shader: flat"></a-entity>
-                </a-entity>
+              
 
                 <a-entity position="33 0 -33" cursor-listener look-controls id="camera" camera="userHeight: 1.6" listener>
                 </a-entity>
