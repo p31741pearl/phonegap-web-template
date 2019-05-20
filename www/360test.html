@@ -88,6 +88,8 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script>
 
     <script>
+        var attachFastClick = Origami.fastclick;
+attachFastClick(document.body);
         AFRAME.registerComponent('cursor-listener', {
             init: function() {
                 var isMousePressed = false
