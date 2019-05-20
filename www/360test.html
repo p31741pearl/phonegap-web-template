@@ -72,9 +72,10 @@
             border:0;
                 margin-bottom: 5pt;
                 margin-left: 5pt;
-               background-color: #ffffff;
-        
-                
+               background-color: #ffffff;  
+            }
+            #hii{
+                display:none;
             }
         }
     </style>
@@ -130,6 +131,7 @@
                             href: '360test.html'
                         });
                     });
+                    
                 }, false)
 
 
@@ -147,16 +149,22 @@
                     var j = document.getElementById('camera').object3D.getWorldQuaternion();
 
                     entityE2.addEventListener('click', function() {
-
-
                         k.setAttribute('rotation', {
                             x: j.x,
                             y: j.y,
                             z: j.z
 
                         });
+                                         if (isMousePressed = false) {
+ document.getElementById('hii').style.display = 'none';
+}
+                      if (isMousePressed = true) {
+ document.getElementById('hii').style.display = 'block';
+}
                         console.log("ro" + j.x);
                     });
+                   
+   
                 }, false)
 
 
@@ -171,7 +179,8 @@
 
 <body>
     <div style="position:relative;">
-        <div class="blockk">
+        
+        <div class="blockk" id="hii" cursor-listener>
             <div class="hey">
                 <button id="btn" onclick="addElementInput()">add</button>
             </div>
@@ -201,6 +210,7 @@
             </a-scene>
 
         </div>
+         
     </div>
 </body>
 
