@@ -3,8 +3,11 @@
 
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script>
+
 
     <style>
         /*手機尺寸的螢幕*/
@@ -80,79 +83,103 @@
             #hii {
                 display: none;
             }
-            #addpoint{
+
+            #addpoint {
                 position: absolute;
-                display:block;
+                display: block;
                 text-align: center;
-                width:360pt;
-                height:20pt;
+                width: 360pt;
+                height: 20pt;
                 margin-top: 380pt;
                 border: none;
+            }
+
+            #checkk {
+                display: none;
+                float: right;
+                margin-top: 300pt;
+
+            }
+
+            #deletee {
+                display: none;
+                float: right;
+                margin-top: 300pt;
             }
         }
     </style>
 
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-    <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
 
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script>
 
     <script>
         AFRAME.registerComponent('cursor-listener', {
             init: function() {
-                var adddd= document.getElementById('addpoint');
-                var isMousePressed = false
-                
-                var on = document.addEventListener.bind(document)
-                adddd.addEventListener('click',function(){
-                on('click', function(e) {
+                var adddd = document.getElementById('addpoint'); /*底下加號按鈕*/
+                var isMousePressed = false;
+                var q = 0; /*圓標設id*/
+                var entityE2 = document.querySelector('a-scene');
+                var entityEl = document.createElement('a-entity');
+
+
+
+                var s = adddd.addEventListener('click', function() {
                     isMousePressed = true;
-                    var entityE2 = document.querySelector('a-scene')
-                    var entityEl = document.createElement('a-entity')
-
                     entityE2.appendChild(entityEl);
+                    entityEl.id = q;
+                     /*取滑鼠座標*/
                     var i = document.getElementById('clickPosition').object3D.getWorldPosition();
-
-                    entityE2.addEventListener('click', function() {
-
-
+                    entityE2.addEventListener('click', function add() {
+                        console.log("加");
+                        /*加圓點*/
                         entityEl.setAttribute('position', {
                             x: i.x,
                             y: i.y,
                             z: i.z
-
                         });
                         entityEl.setAttribute('geometry', {
                             primitive: 'sphere',
                             radius: 3,
                             segmentsWidth: 20,
-                            segmentsHeight: 20
+                            segmentsHeight: 20,
+
                         });
 
+                        /*加號鍵消失*/
+                        document.getElementById('addpoint').style.display = 'none';
+                        /*勾勾跟刪除鍵出現*/
+                        document.getElementById('checkk').style.display = 'block';
+                        document.getElementById('deletee').style.display = 'block';
+                        console.log("q="+q);
+                        q = q + 1;
                         console.log(i.x);
                         console.log(i.y);
                         console.log(i.z);
-                         if (on = true){
-                        document.getElementById('hii').style.display = 'block';
-                        console.log("open");}
-                    
-                    else  {
-                        document.getElementById('hii').style.display = 'none';
-                        console.log("close");}
-                        return;
-
+                       entityE2.removeEventListener('click',add);
                     });
 
-                   
-                   
-                }, false)
-})
+                });
+               /*刪除鍵功能*/
+                 document.getElementById('deletee');
+  deletee.addEventListener('click', function (){
+       entityEl.removeAttribute('geometry');  
+         document.getElementById('addpoint').style.display = 'block';
 
+                    document.getElementById('checkk').style.display = 'none';
+                    document.getElementById('deletee').style.display = 'none';
+        console.log("刪了沒阿");
+    });
+    /*deletee.addEventListener('click', function() {
+                 document.getElementById('q');
+         
+                 q.entityE2.removeChild(q);
+                    document.getElementById('addpoint').style.display = 'block';
+
+                    document.getElementById('checkk').style.display = 'none';
+                    document.getElementById('deletee').style.display = 'none';
+        console.log("刪了沒阿");
+
+                });*/
             },
-
-            
-
-
         });
     </script>
 
@@ -171,15 +198,22 @@
         </div>
         <div class="topp">
             <a-scene id="hey" embedded>
+
                 <a-camera>
+                    <a-entity raycaster="objects: .sky" cursor="fuse: true; fuseTimeout: 500" position="0 0 -5" geometry="primitive: ring; radiusInner: 0.1; radiusOuter: 0.11" material="color: black; shader: flat"></a-entity>
                     <a-entity id="clickPosition" position="0 0 -100"></a-entity>
-                    <a-entity cursor-listener></a-entity>
+                    <a-entity id="pic" cursor-listener></a-entity>
                 </a-camera>
                 <a-sky id="you" src="1515771811007.JPEG"></a-sky>
             </a-scene>
         </div>
+        <div id="checkk">
+            <img src="check.png" onclick="checkk();">
+
+        </div>
+        <img id="deletee" src="check.png" cursor-listener>
         <div class="bottombar">
-        <button id="addpoint" cursor-listener>+</button>
+            <button id="addpoint" cursor-listener>+</button>
         </div>
 
     </div>
@@ -202,6 +236,18 @@
         input.innerHTML = "js 动态添加input";
 
         parent.appendChild(input);
-
     }
+
+    /*按下勾勾後跳出文字輸入框然後自己跟刪除鍵消失*/
+    function checkk() {
+        qq = 1;
+        document.getElementById('hii').style.display = 'block';
+        document.getElementById('checkk').style.display = 'none';
+        document.getElementById('deletee').style.display = 'none';
+        console.log("open");
+        console.log("這裡");
+
+    };
+  
+     
 </script></html>
