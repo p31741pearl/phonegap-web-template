@@ -7,7 +7,7 @@
     <script type="text/javascript" src="cordova.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC&display=swap" rel="stylesheet">
   <script src="https://rawgit.com/takahirox/aframe-outline/master/build/aframe-outline.min.js"></script>
-
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -201,7 +201,7 @@
         #name360{
             width:100%;
             height:40pt;
-            background: -webkit-linear-gradient(left,rgba(190, 207, 253, 0.38),rgba(255, 197, 155, 0.08));
+            background-color: aliceblue;
            
             opacity: 0.8;
                box-shadow: 0 0 30px 5px rgba(121, 142, 255, 0.96);
@@ -210,8 +210,8 @@
         }
          #name360 p{
            display: block;
-           margin-left: 46%;
-           margin-top: -27pt;
+           margin-left: 38%;
+           margin-top: -24pt;
              font-size: 18pt;
              color:#ff8900;
              
@@ -225,36 +225,23 @@
             width:15pt;
             display: block;
         }
-  @media (min-width: 576px)
-.modal-sm {
-     max-width: 600px; 
-}
-        /*手機尺寸的螢幕*/
-        @media only screen and (max-width:480px) {
-            #addpoint {
-                position: absolute;
-                display: block;
-                color: aliceblue;
-                font-size: 20pt;
 
-                text-align: center;
-                width: 307pt;
-                height: 28pt;
-                margin-top: 380pt;
-                border-color: #9bb6ff;
-                border-style: double;
-                background-color: #9bb6ff;
-                line-height: 25px;
-            }
+
+  
+         @media only screen and (max-width:736px)  { /* 這裡寫入指定的 CSS 語法 */
+    
 
             * {
-                margin: 0px;
-                padding: 0px;
-                box-sizing: border-box;
-            }
+           
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+             font-family: 'Microsoft YaHei light';
+        }
+        
 
             .topp {
-                height: 380pt;
+                height:420pt;
                 width: 100%;
 
                 z-index: -1;
@@ -297,7 +284,7 @@
 
                
             }
-
+         
 
             #addpoint {
                 position: absolute;
@@ -307,32 +294,34 @@
 
                 text-align: center;
                 width: 100%;
-                height: 28pt;
-                margin-top: 380pt;
-                border-color: #9bb6ff;
+                height: 37pt;
+                margin-top: 385pt;
+                border-color: rgba(210, 222, 255, 0);
                 border-style: double;
-                background-color: #9bb6ff;
+                background: -webkit-linear-gradient(left,rgb(216, 226, 255),rgb(255, 220, 194));
                 line-height: 25px;
             }
-
+             #addpoint img{
+                 height:80%;
+             }
             .bottombar p {
                 font-size: 20pt;
                 padding-top: none;
                 padding-bottom: 40pt;
             }
 
-            #checkk {
-                display: none;
-                float: right;
-                margin-top: 300pt;
+     
+   #checkk,#deletee {
+            display: none;
+            float: right;
+              margin-top:350pt;
+            margin-left: 20pt;
+            margin-right: -15pt;
+            width:50pt;
+            height:50pt;
 
-            }
-
-            #deletee,#checkkk {
-                display: none;
-                float: right;
-                margin-top: 305pt;
-            }
+        }
+             #deletee { margin-top:356pt;}
 
             .mybtn {
                 background-color: blue;
@@ -356,7 +345,7 @@
 
             }
 
-            #aa {
+            #aa,#bb,#cc {
                 height: 300pt;
                 width: 90%;
                 background-color: #ffffff;
@@ -369,15 +358,45 @@
                 margin-right: 15pt;
 
             }
-
+             #aa h3{
+                 margin-top: -1pt;
+                 font-size: 16pt;
+             }
+               #bb h3{
+                 margin-top: -1pt;
+                 font-size: 16pt;
+             }
+               #cc h3{
+                 margin-top: -1pt;
+                 font-size: 16pt;
+             }
             #fine {
                 display: block;
                 float: right;
+                margin-right:-15pt;
+                margin-top:-15pt;
             }
-             @media (min-width: 576px)
-.modal-sm {
-     max-width: 600px; 
+        .modal-sm {
+     
+            margin-top:20pt;
+            
 }
+             #hee {
+            color: #234eff;
+            width:90%;
+            display: block;
+            float: left;
+            font-size: 12pt;
+                  margin-top:10pt;
+           
+            
+        }
+             #imgg{
+                 width:90%;
+                 height:60%;
+                 margin-right:20pt;
+                 margin-top:-13pt;
+             }
         }
 
     </style>
@@ -430,12 +449,8 @@
                     
                         });
                            
-                            
-                    
-                      
-                        d.setAttribute('cursor-listener', '');
-
-                        d.addEventListener('click', function() {
+                             d.setAttribute('cursor-listener', '');
+           d.addEventListener('click', function() {
                             var worddd = document.getElementById('wordd');
                             worddd.style.display = 'block';
                             var wri = document.getElementById("ie" + nuu);
@@ -449,6 +464,8 @@
                               console.log("跳出來哦"+rr.value);*/
                         });
 
+
+                     
 
                         /*加號鍵消失*/
                         document.getElementById('addpoint').style.display = 'none';
@@ -588,7 +605,7 @@
 <body>
 
     <div style="position:relative;">
-        <div id="name360"><img id="namepic" src="topppp.png"><p>紅樓廣場</p></div>
+        <div id="name360"><img id="namepic" src="topppp.png"><p>阿水廣場</p></div>
         <div class="topp">
             <a-scene id="hey" embedded outline="color:rgb(163, 163, 163);thickness:0.0075;">
                 <a-sound src="src: url(Sequence 02.mp3)" autoplay="true" position="0 2 5"></a-sound>
@@ -604,7 +621,7 @@
                 <a-entity id="b" cursor-listener position=" 34.24 30.3  88.9" geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"  material="color:#ffffff; shader:flat;" ></a-entity>
                  <a-entity id="c" cursor-listener position=" -94.44 15.33  29.05" geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"  material="color:#ffffff; shader:flat;"  geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"></a-entity>
 
-                <a-sky id="you" src="1515771811007.JPEG"></a-sky>
+                <a-sky id="you" src="archpeople.JPG"></a-sky>
 
             </a-scene>
         </div>
@@ -615,7 +632,7 @@
         </div>
         <div id="bb"><img id="fine" src="delete.png" onclick="closeboxb()">
             <h3>這是一個坐著的鴻銘</h3>
-             <div id="hee"><br><br>自從大二就很少看到他了，其實創設進建築系的同學們都是很少遇到，希望大家的肝都能健康。<br>找到一張大一期末展時的合照，大家看起來氣色真好。畢竟那時候評圖什麼的都結束了，真快樂。<br>期末展結束後全班還留下來一起在工作室用投影機看電影，然後一起訂胖老爹，那個時候真的超開心的，我記得看了兩部電影，但我有點忘記是不是一級玩家了，我只覺得大家窩在工作室還蠻溫馨的。</div><img id="imgg" src="3peo.jpg">
+             <div id="hee">自從大二就很少看到他了，其實創設進建築系的同學們都是很少遇到，希望大家的肝都能健康。<br>找到一張大一期末展時的合照，大家看起來氣色真好。畢竟那時候評圖什麼的都結束了，真快樂。</div><img id="imgg" src="3peo.jpg">
         </div>
         <div id="cc"><img id="fine" src="delete.png" onclick="closeboxc()">
             <h3>我在這</h3>
