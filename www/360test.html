@@ -23,7 +23,7 @@
         
 
         .topp {
-            height: 460pt;
+            height: 400pt;
             width: 100%;
 
             z-index: -1;
@@ -66,10 +66,7 @@
 
            background-color: white;
         }
-        .modal-content{
-            width:400pt;
-            height:300pt;
-        }
+       
 
         #addpoint {
             position: absolute;
@@ -80,7 +77,7 @@
             text-align: center;
             width: 100%;
             height: 40pt;
-            margin-top: 460pt;
+            margin-top: 405pt;
             border-color: #e3eaff;
             border-style: double;
             background-color: #ffffff;
@@ -96,7 +93,7 @@
         #checkk {
             display: none;
             float: right;
-              margin-top:449pt;
+              margin-top:327pt;
             margin-left: 10pt;
             margin-right: -45pt;
             width:50pt;
@@ -106,15 +103,16 @@
         #checkkk{ 
             display: block;
             float: right;
-           
-            width:50pt;
-            height:50pt;}
+       
+            width:45pt;
+            height:45pt;
+        }
         #deletee {
             display: none;
             float: right;
-            margin-top:454pt;
-            width:50pt;
-            height:50pt;
+            margin-top:339pt;
+            width:30pt;
+            height:30pt;
         }
 
         .mybtn {
@@ -194,7 +192,10 @@
             margin:auto;
             float: right;
         }
-        #adwo{
+       
+        
+     
+        #adwo,#addimage{
             width:35.1pt;
             height:30pt;
         }
@@ -210,11 +211,11 @@
         }
          #name360 p{
            display: block;
-           margin-left: 38%;
+          
            margin-top: -24pt;
              font-size: 18pt;
              color:#ff8900;
-             
+             text-align: center;
           
         }
         #namepic{
@@ -300,7 +301,7 @@
                 text-align: center;
                 width: 100%;
                 height: 37pt;
-                margin-top: 348pt;
+                margin-top: 410pt;
                 border-color: rgba(210, 222, 255, 0);
                 border-style: double;
                 background: -webkit-linear-gradient(left,rgb(216, 226, 255),rgb(255, 220, 194));
@@ -327,9 +328,9 @@
       
 
         }
-             #deletee { margin-top:319pt;
-             width:33pt;
-             height:33pt;
+             #deletee { margin-top:317pt;
+             width:30pt;
+             height:30pt;
              }
 
             .mybtn {
@@ -422,8 +423,12 @@
                  height:100%;
                  overflow-y: auto;
              }
-         
-           
+             #aimg{
+                 width:80%;
+             }
+             .a-enter-vr-button{
+                 display:none;
+             }
         }
       
     </style>
@@ -642,28 +647,32 @@
                     <a-entity id="clickPosition" position="0 0 -100"></a-entity>
                     <a-entity id="pic" cursor-listener></a-entity>
                 </a-entity>
-                <a-entity id="a" cursor-listener  position=" 90.6 -5.9  -41.68" material="color:#ffffff; shader:flat;" geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"></a-entity>
+                 <a-entity id="a" cursor-listener  position=" 91.85  39.3  -4.1" material="color:#ffffff; shader:flat;" geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"></a-entity>
                 <a-entity  
                          geometry="sphere" ; material="color:red" light="type: point; intensity:0.8; color:blue;" position="-3000 200 -2000"></a-entity>
-                <a-entity id="b" cursor-listener position=" 34.24 30.3  88.9" geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"  material="color:#ffffff; shader:flat;" ></a-entity>
-                 <a-entity id="c" cursor-listener position=" -94.44 15.33  29.05" geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"  material="color:#ffffff; shader:flat;"  geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"></a-entity>
+                <a-entity id="b" cursor-listener position=" -82.5 42.59  -37.1" geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"  material="color:#ffffff; shader:flat;" ></a-entity>
+                 <a-entity id="c" cursor-listener position=" 92.76 33.34 16.8" geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"  material="color:#ffffff; shader:flat;"  geometry="primitive:sphere;  radius: 5; segmentsWidth: 20; segmentsHeight: 20;"></a-entity>
 
-                <a-sky id="you" src="archpeople.JPG"></a-sky>
+                <a-sky id="you" src="quanwhalittleroad.JPG"></a-sky>
+
 
             </a-scene>
         </div>
         <div id="wordd"><img id="fine" src="delete.png" onclick="closebox()"></div>
         <div id="aa"><img id="fine" src="delete.png" onclick="closeboxa()">
-            <h3>辛苦趕工中的作品們</h3>
-            <div id="hee">為了期末的建築週，建築二的同學們將阿水廣場封起來，在裡頭努力趕工，要用竹子在空間支撐出穩定又美麗的結構，他們還得將一根根比人還高的竹子從外面搬運回學校。我半夜12點回宿舍時，經過這裡仍然是燈火通明，且傳來交談聲，建築二的大家假日也一起製作作品，晚上仍繼續努力，真期待建築週能看到美麗的作品們。</div>
+            <h3>外面的樓梯</h3>
+            <img id="aimg"src="DSC_1203.svg">
+            <div id="hee">黃昏時的光線照耀在這個小空間時，站在這個階梯上可以看到很漂亮的景色。閃耀的綠葉、鏽蝕卻被照的閃耀的腳踏車，幸運的話，有時候可以看到鐵皮屋頂上慵懶睡覺的肥肥校貓，雖然那已經是大一的事了。</div>
         </div>
         <div id="bb"><img id="fine" src="delete.png" onclick="closeboxb()">
-            <h3>這是一個坐著的鴻銘</h3>
-             <div id="hee"><img id="imgg" src="3peo.jpg">自從大二就很少看到他了，其實創設進建築系的同學們都是很少遇到，希望大家的肝都能健康。<br>找到一張大一期末展時的合照，大家看起來氣色真好。畢竟那時候評圖什麼的都結束了，真快樂。<br>期末展結束後全班還留下來一起在工作室用投影機看電影，然後一起訂胖老爹，那個時候真的超開心的，我記得看了兩部電影，但我有點忘記是不是一級玩家了，我只覺得大家窩在工作室還蠻溫馨的。</div>
+            <h3>夜晚的外牆</h3>
+            <img id="aimg" src="bike.svg">
+             <div id="hee">晚上的燈光配上老舊的腳踏車，畫面、光線居然是美的。大一時常常看到這個景色，從工作室趕工完後的夜晚，就可以發現北科漂亮的角落。</div>
         </div>
         <div id="cc"><img id="fine" src="delete.png" onclick="closeboxc()">
-            <h3>我在這</h3>
-            <div id="hee">其實用360相機拍照的我躲在這根柱子後面哦，看到自己不小心露出來會很冏的。</div>
+            <h3>光華出沒的貓貓</h3>
+            <img id="aimg" src="cat.svg">
+            <div id="hee">爬外面的樓梯時，不經意轉頭就看到這個可愛的畫面，這個空間對牠來說很隱蔽又涼爽，幾次經過發現牠很喜歡在那裡睡覺。花草配上貓，也太美好了吧</div>
         </div>
         <div class=container id="boxx">
             <div class="btn mybtn" id="checkk" data-toggle="modal" data-target="#my_modal">
@@ -690,8 +699,7 @@
                         </div>
                         <!--footer-->
                         <div class="modal-footer">
-
-                            <img id="checkkk" src="check.png" data-action="submit">
+  <img  id="checkkk" src="check.png" data-action="submit" >
                         </div>
 
                     </div>
@@ -769,7 +777,7 @@ objs[i].id= i;};*/
         console.log("這裡");
 
 
-    };
+   
     const submitBtn = document.querySelector('[data-action="submit"]');
     submitBtn.addEventListener("click", processFormData);
     var inputword = 0;
@@ -811,7 +819,7 @@ objs[i].id= i;};*/
         console.log("wee" + weeee);
         i = i + 1;
 
-    }
+    }}
 
     function closebox() {
         document.getElementById('wordd').style.display = 'none';
